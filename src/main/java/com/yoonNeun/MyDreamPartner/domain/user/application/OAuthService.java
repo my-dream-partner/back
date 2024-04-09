@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
-// TODO 일단 구현 후, 블로그에 정리
 @Service
 public class OAuthService {
 
@@ -24,15 +23,15 @@ public class OAuthService {
     public void socialLogin(String code, String registrationId) {
         String accessToken = getAccessToken(code, registrationId);
         JsonNode userResourceNode = getUserResource(accessToken, registrationId);
-        System.out.println("userResourceNode = " + userResourceNode);
+        // System.out.println("userResourceNode = " + userResourceNode);
 
         String id = userResourceNode.get("id").asText();
         String email = userResourceNode.get("email").asText();
         String nickname = userResourceNode.get("name").asText();
 
-        System.out.println("id = " + id);
-        System.out.println("email = " + email);
-        System.out.println("nickname = " + nickname);
+        // System.out.println("id = " + id);
+        // System.out.println("email = " + email);
+        // System.out.println("nickname = " + nickname);
     }
 
     private String getAccessToken(String authorizationCode, String registrationId) {
