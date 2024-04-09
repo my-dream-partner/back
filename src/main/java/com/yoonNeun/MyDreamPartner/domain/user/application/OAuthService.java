@@ -76,10 +76,6 @@ public class OAuthService {
         params.add("redirect_uri", redirectUri);
         params.add("grant_type", "authorization_code");
 
-        for (Map.Entry<String, List<String>> entry : params.entrySet()) {
-            System.out.println(entry);
-        }
-
         return params;
     }
 
