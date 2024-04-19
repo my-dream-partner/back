@@ -1,6 +1,8 @@
-package com.yoonNeun.MyDreamPartner.domain.user.application;
+package com.yoonNeun.MyDreamPartner.domain.oauth.application;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.yoonNeun.MyDreamPartner.domain.oauth.domain.OAuthResonse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -8,35 +10,21 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
 
+@RequiredArgsConstructor
 @Service
 public class OAuthService {
 
     private final Environment env;
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public OAuthService(Environment env) {
-        this.env = env;
+    public OAuthResonse login(String code, String registrationId) {
+        String accessToken = getAccessTokenAndRefreshToken(code, registrationId); // Google API의 액세스 토큰
+        return getUserResource(accessToken, registrationId);
     }
 
-    public void socialLogin(String code, String registrationId) {
-        String accessToken = getAccessToken(code, registrationId);
-        JsonNode userResourceNode = getUserResource(accessToken, registrationId);
-        // System.out.println("userResourceNode = " + userResourceNode);
-
-        // String id = userResourceNode.get("id").asText();
-        // String email = userResourceNode.get("email").asText();
-        // String nickname = userResourceNode.get("name").asText();
-
-        // System.out.println("id = " + id);
-        // System.out.println("email = " + email);
-        // System.out.println("nickname = " + nickname);
-    }
-
-    private String getAccessToken(String authorizationCode, String registrationId) {
+    private String getAccessTokenAndRefreshToken(String authorizationCode, String registrationId) {
         String clientId = env.getProperty("oauth2." + registrationId + ".client-id"); // application-oauth.yaml ("oauth2.google.client-id")
         String clientSecret = env.getProperty("oauth2." + registrationId + ".client-secret");
         String redirectUri = env.getProperty("oauth2." + registrationId + ".redirect-uri");
@@ -46,20 +34,17 @@ public class OAuthService {
 
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(createTokenRequestBody(authorizationCode, clientId, clientSecret, redirectUri), createTokenRequestHeaders());
         ResponseEntity<JsonNode> responseNode = restTemplate.exchange(tokenUri, HttpMethod.POST, entity, JsonNode.class);
+        JsonNode accessTokenNode = responseNode.getBody();
 
-        return Optional.ofNullable(responseNode.getBody())
-                .map(body -> body.get("access_token").asText())
-                .orElse(null);
+        return Objects.requireNonNull(accessTokenNode).get("access_token").asText();
     }
 
-    private JsonNode getUserResource(String accessToken, String registrationId) {
+    private OAuthResonse getUserResource(String accessToken, String registrationId) {
         String resourceUri = env.getProperty("oauth2." + registrationId + ".resource-uri");
-
         validateResourceUri(resourceUri);
-
         HttpEntity<Void> entity = new HttpEntity<>(createUserResourceRequestHeaders(accessToken));
 
-        return restTemplate.exchange(resourceUri, HttpMethod.GET, entity, JsonNode.class).getBody();
+        return restTemplate.exchange(resourceUri, HttpMethod.GET, entity, OAuthResonse.class).getBody();
     }
 
     private void validateTokenUri(String tokenUri) {
@@ -81,7 +66,7 @@ public class OAuthService {
 
     private HttpHeaders createTokenRequestHeaders() {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED); // application_form_urlencoded
 
         return headers;
     }
@@ -94,7 +79,7 @@ public class OAuthService {
 
     private HttpHeaders createUserResourceRequestHeaders(String accessToken) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + accessToken);
+        headers.set("Authorization", "Bearer " + accessToken); // Bearer
 
         return headers;
     }
