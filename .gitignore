@@ -201,11 +201,18 @@ gradle-app.setting
 *.hprof
 
 ### Custom ###
+# yaml
 src/main/resources/application-oauth.yaml
 src/main/resources/application.yaml
 
+# .idea
 .idea/*.xml
 
+# .iml
 *.iml
+
+# .env
+.env
+
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,macos,intellij
