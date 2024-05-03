@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.3'
+	id 'org.springframework.boot' version '3.2.4'
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
@@ -27,6 +27,7 @@ ext {
 }
 
 dependencies {
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	// implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
@@ -54,7 +55,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// testImplementation 'org.springframework.security:spring-security-test'
 
-	testCompileOnly(group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2')
+	testCompileOnly('it.ozimov:embedded-redis:0.7.2') {
+		exclude group: 'commons-io', module: 'commons-io'
+	}
+	testCompileOnly 'commons-io:commons-io:2.11.0'
 }
 
 dependencyManagement {
