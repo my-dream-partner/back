@@ -5,8 +5,6 @@ import lombok.Getter;
 @Getter
 public class Survey {
 
-    // 1. 필요한 데이터
-    // 난이도 이름(type_name), 항목 이름(category_name), 항목 내용(summary), 총 점수(total_score)
     private final String typeName;
     private final String categoryName;
     private final String summary;

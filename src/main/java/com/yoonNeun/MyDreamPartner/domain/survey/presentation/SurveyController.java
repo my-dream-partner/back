@@ -13,10 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SurveyController {
 
-    // 1. 필요한 객체 의존성 주입
     private final SurveyService surveyService;
 
-    // 2. URI(단, URL은 해당되지 않음)
     @GetMapping("/survey")
     public SuccessResponse<List<Survey>> getSurveyIntroduction() {
         List<Survey> surveys = surveyService.getSurveyIntroduction();
