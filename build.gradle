@@ -41,7 +41,6 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
-	// Query DSL
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 
 	compileOnly 'org.projectlombok:lombok'
@@ -53,14 +52,17 @@ dependencies {
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
-	// Query DSL
 	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// testImplementation 'org.springframework.security:spring-security-test'
-	// testCompileOnly(group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2')
+
+	testCompileOnly('it.ozimov:embedded-redis:0.7.2') {
+		exclude group: 'commons-io', module: 'commons-io'
+	}
+	testCompileOnly 'commons-io:commons-io:2.11.0'
 }
 
 dependencyManagement {
@@ -74,9 +76,6 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-/**
- * QueryDSL Build Options
- */
 def querydslDir = "src/main/generated"
 
 sourceSets {
