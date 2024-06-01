@@ -23,6 +23,7 @@ public class SurveyRepositoryCustomImpl implements SurveyRepositoryCustom {
     public List<Survey> findSurveyIntroductionDetails() {
         return queryFactory
                 .select(Projections.constructor(Survey.class,
+                        type.typeId,
                         type.typeName,
                         category.categoryName,
                         category.summary,
