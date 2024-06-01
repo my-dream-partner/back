@@ -214,5 +214,8 @@ src/main/resources/application.yaml
 # .env
 .env
 
+# query dsl
+src/main/generated
+
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,macos,intellij
