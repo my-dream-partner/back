@@ -1,7 +1,7 @@
-package com.yoonNeun.MyDreamPartner.domain.oauth.application;
+package com.yoonNeun.MyDreamPartner.domain.user.application;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.yoonNeun.MyDreamPartner.domain.oauth.domain.OAuthResonse;
+import com.yoonNeun.MyDreamPartner.domain.user.domain.dto.OAuthResonse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;

@@ -1,6 +1,7 @@
-package com.yoonNeun.MyDreamPartner.domain.oauth.domain;
+package com.yoonNeun.MyDreamPartner.domain.user.domain;
 
 import com.yoonNeun.MyDreamPartner.common.security.provider.JwtTokenProvider;
+import com.yoonNeun.MyDreamPartner.domain.user.domain.dto.AuthToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

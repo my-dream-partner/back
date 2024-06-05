@@ -1,4 +1,4 @@
-package com.yoonNeun.MyDreamPartner.domain.oauth.domain;
+package com.yoonNeun.MyDreamPartner.domain.user.domain.dto;
 
 import lombok.Getter;
 

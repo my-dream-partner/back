@@ -1,4 +1,4 @@
-package com.yoonNeun.MyDreamPartner.domain.user.domain;
+package com.yoonNeun.MyDreamPartner.domain.user.domain.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
