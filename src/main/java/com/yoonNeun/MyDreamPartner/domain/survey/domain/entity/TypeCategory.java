@@ -1,7 +1,5 @@
-package com.yoonNeun.MyDreamPartner.domain.typecategory.domain;
+package com.yoonNeun.MyDreamPartner.domain.survey.domain.entity;
 
-import com.yoonNeun.MyDreamPartner.domain.category.domain.Category;
-import com.yoonNeun.MyDreamPartner.domain.type.domain.Type;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
