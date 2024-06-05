@@ -1,7 +1,7 @@
 package com.yoonNeun.MyDreamPartner.domain.survey.application;
 
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.Survey;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.SurveyDescription;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.Survey;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.SurveyDescription;
 import com.yoonNeun.MyDreamPartner.domain.survey.infrastructure.SurveyRepositoryCustomImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

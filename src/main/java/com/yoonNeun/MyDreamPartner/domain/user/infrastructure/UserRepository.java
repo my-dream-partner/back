@@ -1,6 +1,6 @@
 package com.yoonNeun.MyDreamPartner.domain.user.infrastructure;
 
-import com.yoonNeun.MyDreamPartner.domain.user.domain.User;
+import com.yoonNeun.MyDreamPartner.domain.user.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,8 +1,8 @@
 package com.yoonNeun.MyDreamPartner.domain.user.presentation;
 
 import com.yoonNeun.MyDreamPartner.common.response.SuccessResponse;
-import com.yoonNeun.MyDreamPartner.domain.oauth.domain.AuthToken;
-import com.yoonNeun.MyDreamPartner.domain.user.application.LoginService;
+import com.yoonNeun.MyDreamPartner.domain.user.domain.dto.AuthToken;
+import com.yoonNeun.MyDreamPartner.domain.user.application.UserLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping(value = "/login/oauth2", produces = "application/json")
 @Slf4j
-public class OAuthController {
-    private final LoginService loginService;
+public class UserLoginController {
+    private final UserLoginService userLoginService;
 
     @GetMapping("/code/{registrationId}")
     public SuccessResponse<AuthToken> googleLogin(@RequestParam String code, @PathVariable String registrationId) {
-        AuthToken authToken = loginService.socialLogin(code, registrationId);
+        AuthToken authToken = userLoginService.socialLogin(code, registrationId);
         return new SuccessResponse<>(authToken);
     }
 }

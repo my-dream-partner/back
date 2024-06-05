@@ -1,4 +1,4 @@
-package com.yoonNeun.MyDreamPartner.domain.survey.domain;
+package com.yoonNeun.MyDreamPartner.domain.survey.domain.dto;
 
 import lombok.Getter;
 

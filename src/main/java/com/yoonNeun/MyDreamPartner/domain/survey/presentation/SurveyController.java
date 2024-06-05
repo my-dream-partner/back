@@ -2,8 +2,8 @@ package com.yoonNeun.MyDreamPartner.domain.survey.presentation;
 
 import com.yoonNeun.MyDreamPartner.common.response.SuccessResponse;
 import com.yoonNeun.MyDreamPartner.domain.survey.application.SurveyService;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.Survey;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.SurveyDescription;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.Survey;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.SurveyDescription;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

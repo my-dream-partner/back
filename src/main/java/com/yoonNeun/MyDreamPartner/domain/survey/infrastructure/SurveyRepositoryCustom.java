@@ -1,7 +1,7 @@
 package com.yoonNeun.MyDreamPartner.domain.survey.infrastructure;
 
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.Survey;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.SurveyDescription;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.Survey;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.SurveyDescription;
 
 import java.util.List;
 

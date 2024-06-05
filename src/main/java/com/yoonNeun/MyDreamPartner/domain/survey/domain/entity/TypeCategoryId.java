@@ -1,4 +1,4 @@
-package com.yoonNeun.MyDreamPartner.domain.typecategory.domain;
+package com.yoonNeun.MyDreamPartner.domain.survey.domain.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;

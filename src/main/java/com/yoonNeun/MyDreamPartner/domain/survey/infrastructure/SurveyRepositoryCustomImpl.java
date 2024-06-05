@@ -2,16 +2,16 @@ package com.yoonNeun.MyDreamPartner.domain.survey.infrastructure;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.Survey;
-import com.yoonNeun.MyDreamPartner.domain.survey.domain.SurveyDescription;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.Survey;
+import com.yoonNeun.MyDreamPartner.domain.survey.domain.dto.SurveyDescription;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.yoonNeun.MyDreamPartner.domain.type.domain.QType.type;
-import static com.yoonNeun.MyDreamPartner.domain.category.domain.QCategory.category;
-import static com.yoonNeun.MyDreamPartner.domain.typecategory.domain.QTypeCategory.typeCategory;
+import static com.yoonNeun.MyDreamPartner.domain.survey.domain.entity.QCategory.category;
+import static com.yoonNeun.MyDreamPartner.domain.survey.domain.entity.QType.type;
+import static com.yoonNeun.MyDreamPartner.domain.survey.domain.entity.QTypeCategory.typeCategory;
 
 @RequiredArgsConstructor
 @Repository
