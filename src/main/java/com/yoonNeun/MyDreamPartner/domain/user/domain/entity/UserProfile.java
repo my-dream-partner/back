@@ -18,7 +18,7 @@ public class UserProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userProfileId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
